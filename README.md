@@ -5,6 +5,7 @@ A polished Home Assistant Lovelace card for a single `climate` entity. It presen
 ## Features
 
 - Compact overview with current temperature, target temperature, HVAC activity, and power status.
+- State-aware color accents: warm tones for heating, cool tones for cooling, and a calm gradient when off.
 - Quick target-temperature decrement/increment using the entity's reported `target_temp_step` and limits.
 - **Adjust controls** expands capability-aware HVAC mode and preset selectors; **Hide controls** returns to the compact view.
 - Modes and presets are populated from `hvac_modes` and `preset_modes`; no entity-specific values are hard-coded.
