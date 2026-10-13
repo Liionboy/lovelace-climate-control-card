@@ -9,7 +9,8 @@ A polished Home Assistant Lovelace card for a single `climate` entity. It presen
 - Quick target-temperature decrement/increment using the entity's reported `target_temp_step` and limits.
 - **Adjust controls** expands capability-aware HVAC mode and preset selectors; **Hide controls** returns to the compact view.
 - Modes and presets are populated from `hvac_modes` and `preset_modes`; no entity-specific values are hard-coded.
-- Displays temperature units and heating/idle state from Home Assistant attributes.
+- Shows `Heating` in orange/red only while Home Assistant reports active heating; `Idle` means heat mode may be selected but the thermostat is not currently heating. If `hvac_action` is unavailable, the card falls back to the selected mode.
+- Press and hold an empty area of the card for the thermostat's Home Assistant More Info dialog; interactive controls are not affected.
 - Responsive, theme-aware styling, accessible labels, and reduced-motion support.
 - No external assets, libraries, analytics, credentials, or backend integration.
 

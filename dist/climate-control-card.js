@@ -1,16 +1,16 @@
 const CARD_TYPE = "climate-control-card";
-const VERSION = "1.1.0";
+const VERSION = "1.3.0";
 
 const STYLE = `
   :host{display:block;color:var(--primary-text-color)}
   ha-card{overflow:hidden;border:1px solid color-mix(in srgb,var(--divider-color) 58%,transparent);border-radius:24px;background:var(--ha-card-background,var(--card-background-color,#fff));box-shadow:var(--ha-card-box-shadow,0 12px 34px rgba(20,35,55,.1))}
   .shell{--glow:var(--primary-color);padding:clamp(16px,3vw,22px);background:radial-gradient(ellipse at 8% 0%,color-mix(in srgb,var(--glow) 11%,transparent),transparent 48%)}
-  .header{display:flex;align-items:center;justify-content:space-between;gap:12px}.identity{display:flex;align-items:center;gap:12px;min-width:0}.icon-wrap{display:grid;place-items:center;width:44px;height:44px;flex:none;border:1px solid color-mix(in srgb,var(--glow) 22%,transparent);border-radius:15px;background:color-mix(in srgb,var(--glow) 12%,var(--card-background-color,#fff));color:var(--glow)}.icon-wrap ha-icon{--mdc-icon-size:24px}.identity-copy{min-width:0}.eyebrow{color:var(--secondary-text-color);font-size:9px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.title{margin:3px 0 0;overflow:hidden;font-size:clamp(17px,2.5vw,21px);font-weight:770;letter-spacing:-.035em;text-overflow:ellipsis;white-space:nowrap}.pill{display:flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:var(--secondary-background-color);color:var(--secondary-text-color);font-size:11px;font-weight:750;white-space:nowrap}.dot{width:7px;height:7px;border-radius:50%;background:currentColor}.pill.active{color:var(--success-color,#23876e)}.pill.heating{color:var(--error-color,#df7044)}.pill.unavailable{color:var(--error-color,#c74343)}
+  .header{display:flex;align-items:center;justify-content:space-between;gap:12px}.identity{display:flex;align-items:center;gap:12px;min-width:0}.icon-wrap{display:grid;place-items:center;width:44px;height:44px;flex:none;border:1px solid color-mix(in srgb,var(--glow) 22%,transparent);border-radius:15px;background:color-mix(in srgb,var(--glow) 12%,var(--card-background-color,#fff));color:var(--glow)}.icon-wrap ha-icon{--mdc-icon-size:24px}.identity-copy{min-width:0}.eyebrow{color:var(--secondary-text-color);font-size:9px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.title{margin:3px 0 0;overflow:hidden;font-size:clamp(17px,2.5vw,21px);font-weight:770;letter-spacing:-.035em;text-overflow:ellipsis;white-space:nowrap}.pill{display:flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:var(--secondary-background-color);color:var(--secondary-text-color);font-size:11px;font-weight:750;white-space:nowrap}.dot{width:7px;height:7px;border-radius:50%;background:currentColor}.pill.active{color:var(--success-color,#23876e)}.pill.idle{color:var(--secondary-text-color)}.pill.heating{color:var(--error-color,#df7044)}.pill.unavailable{color:var(--error-color,#c74343)}
   .temperatures{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.temperature{min-width:0;padding:15px;border:1px solid color-mix(in srgb,var(--divider-color) 58%,transparent);border-radius:18px;background:color-mix(in srgb,var(--card-background-color,#fff) 86%,var(--secondary-background-color))}.temperature-label{color:var(--secondary-text-color);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase}.temperature-value{display:flex;align-items:baseline;gap:3px;margin-top:5px;font-size:clamp(29px,6vw,40px);font-weight:820;letter-spacing:-.065em;line-height:1}.unit{font-size:15px;font-weight:650;letter-spacing:0}.temperature-hint{margin-top:7px;color:var(--secondary-text-color);font-size:11px}.target-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:13px}.stepper{display:flex;align-items:center;gap:8px}.step-button{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--divider-color);border-radius:13px;background:var(--card-background-color,#fff);color:var(--primary-text-color);cursor:pointer;transition:transform .15s ease,border-color .15s ease}.step-button ha-icon{--mdc-icon-size:19px}.step-button:hover:not(:disabled){border-color:var(--glow);transform:translateY(-1px)}.step-button:disabled{opacity:.45;cursor:not-allowed}.step-label{color:var(--secondary-text-color);font-size:11px}
   .compact-control{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:15px}.feedback{min-width:0;min-height:16px;color:var(--secondary-text-color);font-size:11px;line-height:1.4}.feedback.error{color:var(--error-color,#c74343)}.actions{display:flex;align-items:center;gap:9px}.power{display:flex;align-items:center;justify-content:center;gap:8px;min-width:112px;min-height:42px;padding:0 15px;border:0;border-radius:14px;background:var(--glow);color:var(--text-primary-color,#fff);font:inherit;font-size:12px;font-weight:780;cursor:pointer;transition:filter .15s ease,transform .15s ease}.power:hover:not(:disabled){filter:brightness(1.06);transform:translateY(-1px)}.power.off{border:1px solid var(--divider-color);background:var(--card-background-color,#fff);color:var(--primary-text-color)}.power ha-icon{--mdc-icon-size:18px}.power:disabled{opacity:.55;cursor:wait}.controls-toggle{min-height:42px;padding:0 12px;border:1px solid var(--divider-color);border-radius:14px;background:var(--card-background-color,#fff);color:var(--primary-text-color);font:inherit;font-size:12px;font-weight:740;cursor:pointer;transition:background .15s ease,border-color .15s ease}.controls-toggle:hover{border-color:var(--glow);background:color-mix(in srgb,var(--glow) 7%,var(--card-background-color,#fff))}
   .settings{margin-top:16px;padding-top:15px;border-top:1px solid color-mix(in srgb,var(--divider-color) 72%,transparent)}.settings-title{margin:0 0 11px;font-size:12px;font-weight:760}.setting{margin-top:12px}.setting-label{display:block;margin-bottom:7px;color:var(--secondary-text-color);font-size:10px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}.select-wrap{position:relative}.select{width:100%;min-height:43px;padding:0 38px 0 13px;border:1px solid var(--divider-color);border-radius:13px;background:var(--card-background-color,#fff);color:var(--primary-text-color);font:inherit;font-size:13px;font-weight:650;appearance:none}.select-wrap:after{position:absolute;top:50%;right:14px;color:var(--secondary-text-color);content:'⌄';pointer-events:none;transform:translateY(-60%)}
   .shell{position:relative;background:radial-gradient(ellipse at 0% 0%,color-mix(in srgb,var(--glow) 17%,transparent),transparent 52%),radial-gradient(ellipse at 100% 100%,color-mix(in srgb,#38bdf8 9%,transparent),transparent 48%)}.shell:before{position:absolute;top:0;right:22px;left:22px;height:3px;border-radius:0 0 4px 4px;background:linear-gradient(90deg,#38bdf8,var(--glow),#c084fc);content:""}
-  .icon-wrap{border-color:color-mix(in srgb,var(--glow) 35%,transparent);background:linear-gradient(145deg,color-mix(in srgb,var(--glow) 90%,white),color-mix(in srgb,var(--glow) 68%,#7c3aed));box-shadow:0 7px 18px color-mix(in srgb,var(--glow) 22%,transparent);color:#fff}.eyebrow{color:var(--glow)}.pill{border:1px solid color-mix(in srgb,currentColor 12%,transparent);background:color-mix(in srgb,currentColor 8%,var(--card-background-color,#fff))}.dot{box-shadow:0 0 0 3px color-mix(in srgb,currentColor 17%,transparent)}.pill.active{color:#0f9b78}.pill.heating{color:#e45d31}.pill.cooling{color:#2588d8}
+  .icon-wrap{border-color:color-mix(in srgb,var(--glow) 35%,transparent);background:linear-gradient(145deg,color-mix(in srgb,var(--glow) 90%,white),color-mix(in srgb,var(--glow) 68%,#7c3aed));box-shadow:0 7px 18px color-mix(in srgb,var(--glow) 22%,transparent);color:#fff}.eyebrow{color:var(--glow)}.pill{border:1px solid color-mix(in srgb,currentColor 12%,transparent);background:color-mix(in srgb,currentColor 8%,var(--card-background-color,#fff))}.dot{box-shadow:0 0 0 3px color-mix(in srgb,currentColor 17%,transparent)}.pill.active{color:#0f9b78}.pill.idle{color:var(--secondary-text-color)}.pill.heating{color:#e45d31}.pill.cooling{color:#2588d8}
   .temperature:first-child{border-color:color-mix(in srgb,#0ea5e9 22%,var(--divider-color));background:linear-gradient(145deg,color-mix(in srgb,#38bdf8 12%,var(--card-background-color,#fff)),var(--card-background-color,#fff) 76%)}.temperature:nth-child(2){border-color:color-mix(in srgb,var(--glow) 26%,var(--divider-color));background:linear-gradient(145deg,color-mix(in srgb,var(--glow) 13%,var(--card-background-color,#fff)),var(--card-background-color,#fff) 76%)}.temperature:first-child .temperature-label,.temperature:first-child .temperature-value{color:#138ab5}.temperature:nth-child(2) .temperature-label,.temperature:nth-child(2) .temperature-value{color:var(--glow)}
   .step-button{border-color:color-mix(in srgb,var(--glow) 24%,var(--divider-color));background:color-mix(in srgb,var(--glow) 7%,var(--card-background-color,#fff));color:var(--glow)}.step-button:hover:not(:disabled){background:color-mix(in srgb,var(--glow) 17%,var(--card-background-color,#fff))}.power{background:linear-gradient(135deg,var(--glow),color-mix(in srgb,var(--glow) 72%,#7c3aed));box-shadow:0 6px 15px color-mix(in srgb,var(--glow) 24%,transparent);color:#fff}.power.off{border-color:color-mix(in srgb,#38bdf8 30%,var(--divider-color));background:linear-gradient(135deg,#e0f2fe,#ede9fe);box-shadow:none;color:#37577f}.controls-toggle{border-color:color-mix(in srgb,var(--glow) 25%,var(--divider-color));background:color-mix(in srgb,var(--glow) 7%,var(--card-background-color,#fff));color:var(--glow)}.controls-toggle:hover{background:color-mix(in srgb,var(--glow) 14%,var(--card-background-color,#fff))}.settings{padding:15px;border:1px solid color-mix(in srgb,var(--glow) 20%,var(--divider-color));border-radius:17px;background:linear-gradient(145deg,color-mix(in srgb,var(--glow) 6%,var(--card-background-color,#fff)),var(--card-background-color,#fff) 75%)}.settings-title{color:var(--glow)}.select{border-color:color-mix(in srgb,var(--glow) 20%,var(--divider-color))}.select-wrap:after{color:var(--glow)}
   @media(max-width:480px){.shell{padding:14px}.header{gap:8px}.identity{gap:9px}.icon-wrap{width:38px;height:38px;border-radius:13px}.icon-wrap ha-icon{--mdc-icon-size:21px}.title{font-size:16px}.pill{gap:5px;padding:6px 8px;font-size:10px}.temperatures{gap:8px;margin-top:15px}.temperature{padding:11px;border-radius:15px}.temperature-value{font-size:clamp(25px,7vw,32px)}.temperature-hint{font-size:10px}.target-row{margin-top:10px}.step-button{width:35px;height:35px}.compact-control{gap:8px;margin-top:12px}.actions{gap:6px}.power{min-width:90px;min-height:38px;padding:0 9px}.controls-toggle{min-height:38px;padding:0 9px}.settings{margin-top:13px;padding:12px}}
@@ -29,6 +29,40 @@ const ACTION_LABELS = { off: "Off", heating: "Heating", cooling: "Cooling", idle
 
 function escapeHtml(value) {
   return String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+}
+
+function attachMoreInfoHold(root, host, getEntityId) {
+  let timer;
+  let start;
+  let lastOpenedAt = 0;
+  const interactive = (event) => event.composedPath().some((node) => node instanceof HTMLElement && node.matches("button,input,select,textarea,a,[role='button'],[contenteditable='true']"));
+  const open = (entityId) => {
+    if (!entityId) return;
+    lastOpenedAt = Date.now();
+    host.dispatchEvent(new CustomEvent("hass-more-info", { bubbles: true, composed: true, detail: { entityId } }));
+  };
+  const cancel = () => { clearTimeout(timer); timer = undefined; start = undefined; };
+  root.addEventListener("pointerdown", (event) => {
+    cancel();
+    if (event.button !== 0 || interactive(event)) return;
+    const entityId = getEntityId(event);
+    if (!entityId) return;
+    start = { x: event.clientX, y: event.clientY };
+    timer = window.setTimeout(() => { timer = undefined; open(entityId); }, 550);
+  });
+  root.addEventListener("pointermove", (event) => {
+    if (start && Math.hypot(event.clientX - start.x, event.clientY - start.y) > 12) cancel();
+  });
+  ["pointerup", "pointercancel"].forEach((type) => root.addEventListener(type, cancel));
+  root.addEventListener("pointerout", (event) => {
+    if (!(event.relatedTarget instanceof Node) || !root.contains(event.relatedTarget)) cancel();
+  });
+  root.addEventListener("contextmenu", (event) => {
+    if (interactive(event)) return;
+    event.preventDefault();
+    cancel();
+    if (Date.now() - lastOpenedAt > 750) open(getEntityId(event));
+  });
 }
 
 function humanize(value, labels = {}) {
@@ -52,6 +86,10 @@ class ClimateControlCard extends HTMLElement {
     if (!config.entity) throw new Error("Choose a climate entity for the Climate Control Card.");
     this._config = { ...config };
     this._root ??= this.attachShadow({ mode: "open" });
+    if (!this._listenersAttached) {
+      attachMoreInfoHold(this._root, this, () => this._config?.entity);
+      this._listenersAttached = true;
+    }
     this.render();
   }
 
@@ -97,9 +135,9 @@ class ClimateControlCard extends HTMLElement {
     }
     const state = this.unavailable ? "Unavailable" : humanize(this.activeMode(), MODE_LABELS);
     const action = String(this.attrs.hvac_action || "");
-    const pillClass = this.unavailable ? "unavailable" : action === "heating" ? "heating" : action === "cooling" ? "cooling" : this.isOff ? "" : "active";
-    const stateText = this.unavailable ? state : (action && action !== "idle" && action !== "off" ? humanize(action, ACTION_LABELS) : state);
-    const glow = this.unavailable ? "#8290a5" : action === "heating" ? "#ef5a32" : action === "cooling" || this.activeMode() === "cool" ? "#278ad5" : this.isOff ? "#647fe0" : this.activeMode() === "heat" ? "#e58b22" : "#9a6cda";
+    const pillClass = this.unavailable ? "unavailable" : action === "heating" ? "heating" : action === "cooling" ? "cooling" : action === "idle" ? "idle" : this.isOff ? "" : "active";
+    const stateText = this.unavailable ? state : (action ? humanize(action, ACTION_LABELS) : state);
+    const glow = this.unavailable ? "#8290a5" : action === "heating" ? "#ef5a32" : action === "cooling" || this.activeMode() === "cool" ? "#278ad5" : this.isOff ? "#647fe0" : action === "idle" ? "#8190a5" : this.activeMode() === "heat" ? "#e58b22" : "#9a6cda";
     const header = `<header class="header"><div class="identity"><div class="icon-wrap"><ha-icon icon="${escapeHtml(this.icon())}"></ha-icon></div><div class="identity-copy"><div class="eyebrow">Home Assistant · Climate</div><h2 class="title">${escapeHtml(this.title())}</h2></div></div><div class="pill ${pillClass}"><span class="dot"></span>${escapeHtml(stateText)}</div></header>`;
     const disabled = this.unavailable ? "disabled" : "";
     const current = `<div class="temperature"><div class="temperature-label">Current</div><div class="temperature-value">${this.formatTemperature(this.current)}<span class="unit">${escapeHtml(this.temperatureUnit)}</span></div><div class="temperature-hint">${this.unavailable ? "Entity unavailable" : escapeHtml(action ? humanize(action, ACTION_LABELS) : "Room temperature")}</div></div>`;
